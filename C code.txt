@@ -1,0 +1,64 @@
+1. Print array of 5 elements in counter clockwise and printf the output after 4th rotatio.
+#include <stdio.h>
+void Counterclock(int arr[], int n, int d) 
+{
+   d = d % n;
+   for (int i = 0; i < d / 2; i++) 
+   {
+       int temp = arr[i];
+       arr[i] = arr[d - i - 1];
+       arr[d - i - 1] = temp;
+   }
+   for (int i = d; i < (n + d) / 2; i++) {
+       int temp = arr[i];
+       arr[i] = arr[n - i + d - 1];
+       arr[n - i + d - 1] = temp;
+   }
+   for (int i = 0; i < n / 2; i++) {
+       int temp = arr[i];
+       arr[i] = arr[n - i - 1];
+       arr[n - i - 1] = temp;
+   }
+}
+int main() {
+   int arr[] = {1, 2, 3, 4, 5};
+   int n = sizeof(arr) / sizeof(arr[0]);
+   int d = 4;
+   Counterclock(arr, n, d);
+   printf("Value of array after 4th rotation: ");
+   for (int i = 0; i < n; i++) {
+       printf("%d ", arr[i]);
+   }
+   printf("\n");
+   return 0;
+}
+
+2.Given a matrix of size MxN where M is the Row and N is the column, Print the transpose of a matrix as output (i.e)Transpose is defined Row elements becomes column elements and vice versa 
+   #include <stdio.h>
+void conversion(int arr[][100], int rows, int columns) {
+    printf("Conversion of the arr:\n");
+    for (int i=0;i<columns; i++) 
+    {
+        for (int j = 0; j < rows; j++) 
+        {
+            printf("%d", arr[j][i]);
+        }
+        printf("\n");
+    }
+}
+int main() {
+    int rows, columns;
+    printf("Enter the number of rows: ");
+    scanf("%d", &rows);
+    printf("Enter the number of columns: ");
+    scanf("%d", &columns);
+    int arr[100][100];
+    printf("Enter the elements of the arr:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            scanf("%d", &arr[i][j]);
+        }
+    }
+    conversion(arr, rows, columns);
+    return 0;
+}
